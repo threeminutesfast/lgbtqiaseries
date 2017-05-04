@@ -1,0 +1,1977 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<html>
+
+<!--
+
+    Hey friends! I'm HendrixRPH and this is my first character page theme. Don't claim this as your own, don't remove the credit, and don't use as a base, please!
+    
+    On the other hand, if you want to steal the code that lets you filter by multiple criteria, go ahead. I stole it from the Isotope documentation anyway. I would recommend you look at it yourself before using so that you get the HTML structure right. Here is where I got it from: http://isotope.metafizzy.co/filtering.html#combination-filters
+    
+    That said, special thanks to Metafizzy for this awesome library!
+
+-->
+
+<head>
+<title>{Title}</title>
+
+<link href='http://fonts.googleapis.com/css?family=Khula:400,300,700' rel='stylesheet' type='text/css'>
+
+<style>
+    ::-webkit-scrollbar {background-color:#888; height:4px; width:6px}
+    ::-webkit-scrollbar-thumb:vertical {background-color:#333; height:50px}
+    ::-webkit-scrollbar-thumb:horizontal {background-color:#333; height:8px!important}
+    
+    body, html {
+        height:100%;
+        margin:0;
+        padding:0;
+        font-family:"Khula", Helvetica, Arial, sans-serif;
+        background-color:#eee;
+        overflow:hidden;
+    }
+    
+    .sidebar {
+        float:left;
+        width:275px;
+        background:#333;
+        height:100%;
+        padding:0;
+        font-family:"Khula", Helvetica, Arial, sans-serif;
+        overflow:scroll;
+    }
+    
+    .sidebar::after {
+        clear:both;
+    }
+    
+    h1 {
+        text-transform:uppercase;
+        text-align:center;
+        padding: 10px 20px;
+        padding-bottom:0px;
+        margin:10px 0px;
+        z-index:0;
+        position:relative;
+        letter-spacing:1px;
+        font-weight:300;
+        color:#eee;
+    }
+    
+    .nav {
+        font-size:10px;
+        letter-spacing:2px;
+        text-transform:lowercase;
+        text-align:center;
+        margin-bottom:10px;
+    }
+    
+    .nav a, a {
+        color:#ccc;
+        text-decoration:none;
+        border-bottom:1px solid #555;
+        transition:0.5s all;
+    }
+    
+    .nav a:hover, a:hover {
+        color:#fff;
+        letter-spacing:3px;
+    }
+    
+    .nav a {
+        padding:0 5px;
+        border-bottom:0px;
+    }
+    
+    .desc {
+        padding: 0px 15px;
+        text-align:center;
+        font-size:11px;
+        margin:0 10px;
+        border:1px solid #555;
+        text-transform:lowercase;
+        letter-spacing:1px;
+        font-weight:300;
+        color:#ddd;
+    }
+    
+    h2 {
+        text-align:center;
+        font-weight:300;
+        text-transform:lowercase;
+        letter-spacing:2px;
+        margin-top:20px;
+        margin-bottom:5px;
+        color:#eee;
+    }
+    
+
+    
+    
+    /* condensed buttons */
+    .sidebar .button {
+        display:block;
+        background:none;
+        border:1px solid #555;
+        margin:6px auto;
+        color:#ccc;
+        width:100px;
+        transition:0.5s all;
+    }
+    
+    .button-group {
+        width:200px;
+        margin:0 auto;
+        text-align:center;
+    }
+    
+    .sidebar .button:hover {
+        background-color:#555;
+        border:#777 1px solid;
+        color:#eee;
+    }
+    
+   .button.ischecked {
+        background-color:#555!important;
+        border:#777 1px solid!important;
+        color:#eee!important;
+    }
+    
+    .wrapper {
+        background-color:#eee;
+        max-height:100%;
+        margin:0;
+        padding:0;
+        margin-left:300px;
+        overflow-y:scroll;
+    }
+    
+    .wrapper:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+    
+    .header {
+        background-color:#333;
+        margin:0;
+        padding:0;
+        height:100px;
+    }
+    
+    .header h1 {
+        margin:0;
+        padding-top:25px;
+        padding-left:200px;
+        font-size:40px;
+    }
+    
+    .chara {
+        margin: 15px;
+    padding: 10px 0;
+    width: 230px;
+    height: 270px;
+    background: #000;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    }
+    
+    .charaimg {
+        position: relative;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+    }
+    
+    .charatitle {
+        margin: 10px 0;
+    letter-spacing: 1px;
+    font-weight: 300;
+    font-size: 12px;
+    font-family: 'Montserrat',Helvetica,cambria,sans-serif;
+    line-height:100%;
+    }
+    
+        .charatitle2 {
+        margin: 10px 0;
+    letter-spacing: 1px;
+    font-weight: 300;
+    font-size: 8px;
+    font-family: 'Montserrat',Helvetica,cambria,sans-serif;
+    line-height:100%;
+    }
+    
+    .charatitle span {
+        margin:0;
+        padding:0;
+        display:inline-block;
+        vertical-align:middle;
+        line-height:1.5em;
+        font-size:10px;
+        letter-spacing:1px;
+        font-weight:300;
+        
+    }
+    
+    .charatitle span p {
+        margin:0;
+        padding:0;
+    }
+    
+    .charahover {
+        position:absolute;
+        z-index:5;
+        background-color:#333;
+        width:190px;
+        height:240px;
+        opacity:0;
+        transition:1s opacity;
+        padding:5px 0;
+        padding-right:10px;
+        overflow:hidden;
+    }
+    
+    .charahover:hover {
+        opacity:0.9;
+        overflow-y:scroll;
+    }
+    
+    .charahover p {
+        line-height:1.35em;
+        font-size:10px;
+        letter-spacing:1px;
+        font-weight:300;
+        padding:2px 8px;
+        color:#fff;
+        margin:0 3px;
+    }
+    
+    .charahover ul, .charahover ol {
+        line-height:1.35em;
+        font-size:10px;
+        letter-spacing:1px;
+        font-weight:300;
+        color:#fff;
+        padding-left:30px;
+    }
+    
+    .credit {
+        position:absolute;
+        margin:7px 13px;
+        padding:3px 5px;
+        font-size:8px;
+        bottom:0;
+        right:0;
+        background-color:#888;
+        color:#fff;
+        opacity:0.5;
+        transition:0.75s all;
+    }
+    
+    .credit:hover {
+        opacity:0.8;
+        letter-spacing:normal;
+    }
+    
+
+
+    
+</style>
+</head>
+
+<body>
+    
+    <div class='sidebar'>
+        
+        <h1>Characters</h1> <!-- Page title goes here. -->
+        
+        <div class="nav">
+        <!-- Navigation links, change them to whatever you want. -->
+            <a href="/">home</a>
+            <a href="/ask">ask</a>
+        </div>
+        
+        <div class="desc">
+            <p>A list of LGBTQIA+ web series characters! (in shows i've watched)</p>
+        </div>
+        
+        <!--
+        
+Okay, changing the filters is potentially the most difficult part. I'll try to explain how you do it.
+
+*** ADD A NEW OPTION TO AN EXISTING GROUP:
+
+    Let's say you want to stick to my defaults, but want to add a "ghost" option for species. Go down to the button group you want to add an option to, in this case species. It looks like this: 
+    
+    --
+    
+    <h2>Species</h2>
+    <div class="button-group" data-filter-group="species">
+        <button data-filter="" class="button ischecked">any</button>
+        <button data-filter=".human" class="button">human</button>
+        <button data-filter=".werewolf" class="button">werewolf</button>
+        <button data-filter=".vampire" class="button">vampire</button>
+    </div>
+    
+    --
+    
+    To add an option, start by coping one of the buttons and pasting it on the line below. We'll copy the vampire one. Here's what it looks like now.
+    
+    --
+    
+    <h2>Species</h2>
+    <div class="button-group" data-filter-group="species">
+        <button data-filter="" class="button ischecked">any</button>
+        <button data-filter=".human" class="button">human</button>
+        <button data-filter=".werewolf" class="button">werewolf</button>
+        <button data-filter=".vampire" class="button">vampire</button>
+        <button data-filter=".vampire" class="button">vampire</button>
+    </div>
+    
+    --
+    
+    But we don't want two vampire ones, so we'll change the values. Here's what it will look like after the values are changed, compared to the original:
+    
+    --
+    
+    Original: <button data-filter=".vampire" class="button">vampire</button>
+    New version: <button data-filter=".ghost" class="button">ghost</button>
+    --
+    
+    And that's it! Everything should work. 
+    
+    
+*** REMOVE AN OPTION FROM AN EXISTING GROUP
+
+    This one's simple. Just find the code for the button that you want to remove and delete that one line. You're done!
+    
+
+*** ADD A NEW FILTER GROUP
+
+    For this example, we'll pretend you want to add a filter group for the character's grade (freshman, sophomore, junior, or senior). First, copy and paste any of the filter groups, starting at the <h2> tag and ending at the </div>. Here's what we'll start with:
+    
+    --
+    
+    <h2>Species</h2>
+        <div class="button-group" data-filter-group="species">
+            <button data-filter="" class="button ischecked">any</button>
+            <button data-filter=".human" class="button">human</button>
+            <button data-filter=".werewolf" class="button">werewolf</button>
+            <button data-filter=".vampire" class="button">vampire</button>
+        </div>
+    
+    --
+    
+    Change the text between the <h2> tags to the title of your filter, in this case "Grade."
+    
+    Next, we need to give the filter group a new official name. In the div tag, the one that looks like this:
+    
+        <div class="button-group" data-filter-group="species">
+    
+    Replace the content of data-filter-group="___" with whatever you want to call your group. In this case, grade works.
+    
+    Don't mess with the first button! Having an "any" button is important, we don't want to remove it. If you really want to call it something else youc an change the "any" text to something else like "all", but leave all the attributes within the tag the same.
+    
+    Now modify the other buttons to create your new options. You'll need to change the data-filter attribute (keep the period at the beginning, that's crucial!) and the label that's between the <button></button> tags. 
+    
+    For the data-filter, do not have any spaces. If you have multiple words, seperate them by dashes. Add and remove options as necessary. 
+    
+    In the end, it should look like this:
+    
+    --
+    
+    <h2>Grade</h2>
+        <div class="button-group" data-filter-group="grade">
+            <button data-filter="" class="button ischecked">any</button>
+            <button data-filter=".freshman" class="button">freshman</button>
+            <button data-filter=".sophomore" class="button">sophomore</button>
+            <button data-filter=".junior" class="button">junior</button>
+            <button data-filter=".senior" class="button">senior</button>
+        </div>
+    
+    --
+    
+    And you're done! Make sure you add the new data filters to the class section of your character entries so the sorting will work. How to do that is covered further down.
+    
+
+*** REMOVE A FILTER GROUP
+
+    To remove a filter group, locate the one you want to remove in the code. Delete everything starting from the <h2> tag and ending at the </div> tag.
+        
+        -->
+        
+        <div class="filters">
+            <h2>show type</h2>
+            <div class="button-group" data-filter-group="status">
+                <button data-filter="" class="button ischecked">any</button>
+                <button data-filter=".liw" class="button">literary</button>
+                <button data-filter=".ow" class="button">original</button>
+            </div>
+            
+            <h2>general</h2>
+            <div class="button-group" data-filter-group="general">
+                <button data-filter="" class="button ischecked">any</button>
+                <button data-filter=".wlw" class="button">wlw</button>
+                <button data-filter=".mlm" class="button">mlm</button>
+            </div>
+            
+            <h2>orientation</h2>
+            <div class="button-group" data-filter-group="orientation">
+                <button data-filter="" class="button ischecked">any</button>
+                <button data-filter=".gay" class="button">gay</button>
+                <button data-filter=".bi" class="button">bi</button>
+                <button data-filter=".pan" class="button">pan</button>
+                <button data-filter=".multi" class="button">multi</button>
+                <button data-filter=".uno" class="button">unspecified</button>
+            </div>
+            
+            <h2>gender</h2>
+            <div class="button-group" data-filter-group="gender">
+                <button data-filter="" class="button ischecked">any</button>
+                <button data-filter=".transm" class="button">trans man</button>
+                <button data-filter=".transf" class="button">trans woman</button>
+                <button data-filter=".nb" class="button">nonbinary</button>
+                <button data-filter=".gf" class="button">genderfluid</button>
+                <button data-filter=".gq" class="button">genderqueer</button>
+                <button data-filter=".ag" class="button">agender</button>
+                <button data-filter=".demib" class="button">demiboy</button>
+                <button data-filter=".demig" class="button">demigirl</button>
+                <button data-filter=".ung" class="button">unspecified</button>
+            </div>
+            
+            <h2>aro/ace spectrum</h2>
+            <div class="button-group" data-filter-group="spectrum">
+                <button data-filter="" class="button ischecked">any</button>
+                <button data-filter=".aro" class="button">aromantic</button>
+                <button data-filter=".ace" class="button">asexual</button>
+                <button data-filter=".demiro" class="button">demiromantic</button>
+                <button data-filter=".demisex" class="button">demisexual</button>
+            </div>
+            
+                    <h2>show</h2>
+            <div class="button-group" data-filter-group="show">
+                <button data-filter="" class="button ischecked">any</button>
+                <button data-filter=".tajwash" class="button">the adventures of jamie watson</button>
+                <button data-filter=".aosb" class="button">the adventures of serena berg</button>
+                <button data-filter=".a4o" class="button">all for one</button>
+                <button data-filter=".aon" class="button">all or nothing</button>
+                <button data-filter=".aov" class="button">any other vlog</button>
+                <button data-filter=".aoje" class="button">the autobiography of jane eyre</button>
+                <button data-filter=".afita" class="button">away from it all</button>
+                <button data-filter=".tbs" class="button">the better strangers</button>
+                <button data-filter=".bgp" class="button">the blair goddess project</button>
+                <button data-filter=".brains" class="button">brains</button>
+                <button data-filter=".bsn" class="button">bright summer night</button>
+                <button data-filter=".cmk" class="button">call me katie</button>
+                <button data-filter=".cm" class="button">carmilla</button>
+                <button data-filter=".cmc" class="button">the cate morland chronicles</button>
+                <button data-filter=".ca" class="button">classic alice</button>
+                <button data-filter=".ci" class="button">couple-ish</button>
+                <button data-filter=".adocm" class="button">a document of madness</button>
+                <button data-filter=".tea" class="button">the emma agenda</button>
+                <button data-filter=".fmwl" class="button">from mansfield with love</button>
+                <button data-filter=".tgg" class="button">the glad game</button>
+                <button data-filter=".ggf" class="button">green gables fables</button>
+                <button data-filter=".tgtr" class="button">the grey tarmac road</button>
+                <button data-filter=".htd" class="button">hamlet the dame</button>
+                <button data-filter=".hoh" class="button">haunted or hoax</button>
+                <button data-filter=".hh" class="button">high'rd help</button>
+                <button data-filter=".ic" class="button">inhuman condition</button>
+                <button data-filter=".itsc" class="button">it's complicated</button>
+                <button data-filter=".tl" class="button">the leslie</button>
+                <button data-filter=".laii" class="button">like, as it is</button>
+                <button data-filter=".lbd" class="button">the lizzie bennet diaries</button>
+                <button data-filter=".lolilo" class="button">lovely little losers</button>
+                <button data-filter=".mfl" class="button">the march family letters</button>
+                <button data-filter=".mmts" class="button">middlemarch: the series</button>
+                <button data-filter=".mmj" class="button">mina murray's journal</button>
+                <button data-filter=".misselarch" class="button">the misselthwaite archives</button>
+                <button data-filter=".napw" class="button">the new adventures of peter and wendy</button>
+                <button data-filter=".nbs" class="button">northbound</button>
+                <button data-filter=".nlts" class="button">nothing like the sun</button>
+                <button data-filter=".nmtd" class="button">nothing much to do</button>
+                <button data-filter=".pgg" class="button">project green gables</button>
+                <button data-filter=".trp" class="button">the roedell project</button>
+                <button data-filter=".raj" class="button">rome & juliet</button>
+                <button data-filter=".ssauw" class="button">school spirit</button>
+                <button data-filter=".st" class="button">sidetrack</button>
+                <button data-filter=".l7sville" class="button">squaresville</button>
+                <button data-filter=".sos" class="button">the soliloquies of santiago</button>
+                <button data-filter=".12gw" class="button">twelfth grade (or whatever)</button>
+                <button data-filter=".unups" class="button">the uncanny upshurs</button>
+                <button data-filter=".wj" class="button">wave jacked</button>
+                <button data-filter=".w3" class="button">wh3els</button>
+                <button data-filter=".wfw" class="button">words from wilde</button>
+                <button data-filter=".twm" class="button">the writing majors</button>
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="wrapper"> <!-- All of your character boxes should go in here. -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara liw mlm gay tbs"> <!-- This is where you add the filter tags. Put them all in the class attribute, separated by spaces. Write them exactly as they are in the data-filter attributes of the filter buttons above, or else it won't work right.
+        Don't remove the chara tag! That will break the code. -->
+               <div class="charatitle"><p>Adam Butler</p> </div>
+               <div class="charatitle2"><p>The Better Strangers</p></div>
+           
+            <img src="https://thegoodviolets.files.wordpress.com/2016/05/adam2.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+            <div class="charatitle2"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                
+                <p>gay</p>
+            </span></div>
+        </div>
+        <!-- END COPY PASTE -->
+        
+                <!-- BEGIN COPY PASTE -->
+        <div class="chara liw mlm multi laii"> <!-- This is where you add the filter tags. Put them all in the class attribute, separated by spaces. Write them exactly as they are in the data-filter attributes of the filter buttons above, or else it won't work right.
+        Don't remove the chara tag! That will break the code. -->
+               <div class="charatitle"><p>Adam Gardner</p> </div>
+               <div class="charatitle2"><p>Like, As It Is</p></div>
+           
+            <img src="https://thegoodviolets.files.wordpress.com/2016/05/adam.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+            <div class="charatitle2"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                
+                <p>Multisexual</p>
+            </span></div>
+        </div>
+        <!-- END COPY PASTE -->
+        
+       <!-- BEGIN COPY PASTE -->
+        <div class="chara ow wlw gay st"> <!-- This is where you add the filter tags. Put them all in the class attribute, separated by spaces. Write them exactly as they are in the data-filter attributes of the filter buttons above, or else it won't work right.
+        Don't remove the chara tag! That will break the code. -->
+               <div class="charatitle"><p>Adrienne Warner</p> </div>
+               <div class="charatitle2"><p>Sidetrack</p></div>
+           
+            <img src="https://thegoodviolets.files.wordpress.com/2016/07/adrienne.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+            <div class="charatitle2"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                
+                <p>Gay</p>
+            </span></div>
+        </div>
+        <!-- END COPY PASTE -->
+        
+<div class="chara ow unups transf wlw gay">
+    <div class="charatitle"><p>agatha upshur</p></div>
+    <div class="charatitle2"><p>the uncanny upshurs</p></div>
+    <img src="https://vidble.com/qbUAoMqg8m.png" class="charaimg">
+    <div class="charatitle2"><p>trans woman and gay</p></div>
+</div>
+
+         <!-- BEGIN COPY PASTE -->
+        <div class="chara ow ag bgp"> <!-- This is where you add the filter tags. Put them all in the class attribute, separated by spaces. Write them exactly as they are in the data-filter attributes of the filter buttons above, or else it won't work right.
+        Don't remove the chara tag! That will break the code. -->
+               <div class="charatitle"><p>Alex</p> </div>
+               <div class="charatitle2"><p>The Blair Goddess Project</p></div>
+           
+            <img src="https://thegoodviolets.files.wordpress.com/2016/07/alex.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+            <div class="charatitle2"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                
+                <p>Agender</p>
+            </span></div>
+        </div>
+        <!-- END COPY PASTE -->
+
+<div class="chara ow wlw gay itsc">
+    <div class="charatitle"><p>alex castillo</p></div>
+    <div class="charatitle2"><p>it's complicated</p></div>
+    <img src="https://vidble.com/UizS4dnhfl.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw htd transm ace">
+    <div class="charatitle"><p>alex o'ness</p></div>
+    <div class="charatitle2"><p>hamlet the dame</p></div>
+    <img src="https://vidble.com/ITv7L3CDWL.jpg" class="charaimg">
+    <div class="charatitle2"><p>trans man and asexual</p></div>
+</div>
+
+<div class="chara ow tl wlw bi">
+    <div class="charatitle"><p>alex whittle</p></div>
+    <div class="charatitle2"><p>the leslie</p></div>
+    <img src="https://vidble.com/qtZ9pUyyos.jpg" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+    
+        
+
+
+        
+                 <!-- BEGIN COPY PASTE -->
+        <div class="chara ow wlw gay st"> <!-- This is where you add the filter tags. Put them all in the class attribute, separated by spaces. Write them exactly as they are in the data-filter attributes of the filter buttons above, or else it won't work right.
+        Don't remove the chara tag! That will break the code. -->
+               <div class="charatitle"><p>Allie Adams</p> </div>
+               <div class="charatitle2"><p>Sidetrack</p></div>
+           
+            <img src="https://vidble.com/B8EWXDT60g.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+            <div class="charatitle2"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                
+                <p>Gay</p>
+            </span></div>
+        </div>
+        <!-- END COPY PASTE -->
+        
+                 <!-- BEGIN COPY PASTE -->
+        <div class="chara ow wlw pan ci"> <!-- This is where you add the filter tags. Put them all in the class attribute, separated by spaces. Write them exactly as they are in the data-filter attributes of the filter buttons above, or else it won't work right.
+        Don't remove the chara tag! That will break the code. -->
+               <div class="charatitle"><p>Amy Warson</p> </div>
+               <div class="charatitle2"><p>Couple-ish</p></div>
+           
+            <img src="https://thegoodviolets.files.wordpress.com/2016/07/amy.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+            <div class="charatitle2"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                
+                <p>Pansexual</p>
+            </span></div>
+        </div>
+        <!-- END COPY PASTE -->
+        
+<div class="chara liw wlw bi raj">
+    <div class="charatitle"><p>angie</p></div>
+    <div class="charatitle2"><p>rome & juliet</p></div>
+    <img src="https://vidble.com/naN3jTiZvr.png" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+        
+                 <!-- BEGIN COPY PASTE -->
+        <div class="chara liw wlw pan pgg"> <!-- This is where you add the filter tags. Put them all in the class attribute, separated by spaces. Write them exactly as they are in the data-filter attributes of the filter buttons above, or else it won't work right.
+        Don't remove the chara tag! That will break the code. -->
+               <div class="charatitle"><p>Anne Shirley</p> </div>
+               <div class="charatitle2"><p>Project Green Gables</p></div>
+           
+            <img src="https://thegoodviolets.files.wordpress.com/2016/05/anne.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+            <div class="charatitle2"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                
+                <p>pansexual</p>
+            </span></div>
+        </div>
+        <!-- END COPY PASTE -->
+        
+                         <!-- BEGIN COPY PASTE -->
+        <div class="chara ow wlw pan aon"> <!-- This is where you add the filter tags. Put them all in the class attribute, separated by spaces. Write them exactly as they are in the data-filter attributes of the filter buttons above, or else it won't work right.
+        Don't remove the chara tag! That will break the code. -->
+               <div class="charatitle"><p>Annie Balkans</p> </div>
+               <div class="charatitle2"><p>All or Nothing</p></div>
+           
+            <img src="https://vidble.com/sIuCll6diL.png" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+            <div class="charatitle2"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                
+                <p>pansexual</p>
+            </span></div>
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <div class="chara liw ow wlw multi cmk nlts">
+    <div class="charatitle"><p>annie james</p></div>
+    <div class="charatitle2"><p>call me katie/nothing like the sun</p></div>
+    <img src="https://vidble.com/WLfygvhhIU.png" class="charaimg">
+    <div class="charatitle2"><p>multisexual</p></div>
+</div>
+        
+        
+                 <!-- BEGIN COPY PASTE -->
+        <div class="chara liw mlm uno 12gw"> <!-- This is where you add the filter tags. Put them all in the class attribute, separated by spaces. Write them exactly as they are in the data-filter attributes of the filter buttons above, or else it won't work right.
+        Don't remove the chara tag! That will break the code. -->
+               <div class="charatitle"><p>Anthony Capozzoli</p> </div>
+               <div class="charatitle2"><p>Twelfth Grade (or Whatever)</p></div>
+           
+            <img src="https://thegoodviolets.files.wordpress.com/2016/05/anthony.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+            <div class="charatitle2"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                
+                <p>Interested in men</p>
+            </span></div>
+        </div>
+        <!-- END COPY PASTE -->
+        
+<div class="chara liw aro ace ssauw">
+    <div class="charatitle"><p>miss arcati</p></div>
+    <div class="charatitle2"><p>school spirit</p></div>
+    <img src="https://vidble.com/OizlBe3AUh.png" class="charaimg">
+    <div class="charatitle2"><p>aromantic asexual</p></div>
+</div>
+        
+<div class="chara liw wlw uno a4o">
+    <div class="charatitle"><p>ariana henries</p></div>
+    <div class="charatitle2"><p>all for one</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/ariana.jpg" class="charaimg">
+    <div class="charatitle2"><p>interested in women</p></div>
+</div>
+
+<div class="chara ow wlw gay st">
+    <div class="charatitle"><p>asa hamidi</p></div>
+    <div class="charatitle2"><p>sidetrack</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/07/asa.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw ace laii">
+    <div class="charatitle"><p>audrey clemmens</p></div>
+    <div class="charatitle2"><p>like, as it is</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/audrey.jpg" class="charaimg">
+    <div class="charatitle2"><p>asexual</p></div>
+</div>
+
+<div class="chara ow wlw bi hh">
+    <div class="charatitle"><p>ava mcmaster</p></div>
+    <div class="charatitle2"><p>high'rd help</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/ava.jpg" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara ow wlw gay trp">
+    <div class="charatitle"><p>ava walcott</p></div>
+    <div class="charatitle2"><p>the roedell project</p></div>
+    <img src="https://vidble.com/OsIfVqtewv.png" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw mlm gay nmtd lolilo">
+    <div class="charatitle"><p>balthazar jones</p></div>
+    <div class="charatitle2"><p>nothing much to do/lovely little losers</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/balthazar.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw afita ace">
+    <div class="charatitle"><p>bathsheba everdene</p></div>
+    <div class="charatitle2"><p>away from it all</p></div>
+    <img src="https://vidble.com/7EabZDAb77.png" class="charaimg">
+    <div class="charatitle2"><p>asexual</p></div>
+</div>
+
+<div class="chara ow mlm uno nlts">
+    <div class="charatitle"><p>ben lawrence</p></div>
+    <div class="charatitle2"><p>nothing like the sun</p></div>
+    <img src="https://vidble.com/0Wpm15FLGP.png" class="charaimg">
+    <div class="charatitle2"><p>interested in men</p></div>
+</div>
+
+<div class="chara liw wlw pan raj">
+    <div class="charatitle"><p>bennie</p></div>
+    <div class="charatitle2"><p>rome & juliet</p></div>
+    <img src="https://vidble.com/Ll9gxcRThq.png" class="charaimg">
+    <div class="charatitle2"><p>pansexual</p></div>
+</div>
+
+<div class="chara liw ace mfl">
+    <div class="charatitle"><p>beth march</p></div>
+    <div class="charatitle2"><p>the march family letters</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/beth2.jpg" class="charaimg">
+    <div class="charatitle2"><p>asexual</p></div>
+</div>
+
+<div class="chara liw ow wlw bi ace cmk nlts">
+    <div class="charatitle"><p>bianca minola</p></div>
+    <div class="charatitle2"><p>call me katie/nothing like the sun</p></div>
+    <img src="https://vidble.com/IQw0EEnq2H.png" class="charaimg">
+    <div class="charatitle2"><p>bi and asexual</p></div>
+</div>
+
+<div class="chara ow wlw pan ace hh">
+    <div class="charatitle"><p>billy angelopolous</p></div>
+    <div class="charatitle2"><p>high'rd help</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/billy.jpg" class="charaimg">
+    <div class="charatitle2"><p>pan and asexual</p></div>
+</div>
+
+<div class="chara ow bgp aro ace">
+    <div class="charatitle"><p>blair</p></div>
+    <div class="charatitle2"><p>the blair goddess project</p></div>
+    <img src="https://vidble.com/UmMK9bxw3E.png" class="charaimg">
+    <div class="charatitle2"><p>aromantic asexual</p></div>
+</div>
+
+<div class="chara liw wlw uno ggf">
+    <div class="charatitle"><p>blake jonas</p></div>
+    <div class="charatitle2"><p>green gables fables</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/blake.jpg" class="charaimg">
+    <div class="charatitle2"><p>interested in women</p></div>
+</div>
+
+<div class="chara liw mlm uno wfw">
+    <div class="charatitle"><p>bosie douglas</p></div>
+    <div class="charatitle2"><p>words from wilde</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/bosie.jpg" class="charaimg">
+    <div class="charatitle2"><p>interested in men</p></div>
+</div>
+
+<div class="chara ow wlw uno unups">
+    <div class="charatitle"><p>briony scott</p></div>
+    <div class="charatitle2"><p>the uncanny upshurs</p></div>
+    <img src="https://vidble.com/9YRiSSICqs.png" class="charaimg">
+    <div class="charatitle2"><p>interested in women</p></div>
+</div>
+
+<div class="chara ow wlw gay st">
+    <div class="charatitle"><p>camille vega</p></div>
+    <div class="charatitle2"><p>sidetrack</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/07/camille.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw wlw gay ca">
+    <div class="charatitle"><p>cara graves</p></div>
+    <div class="charatitle2"><p>classic alice</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/cara.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw wlw gay cm">
+    <div class="charatitle"><p>carmilla karnstein</p></div>
+    <div class="charatitle2"><p>carmilla</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/carmilla.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara ow wlw uno hoh">
+    <div class="charatitle"><p>casey stratton</p></div>
+    <div class="charatitle2"><p>haunted or hoax</p></div>
+    <img src="https://vidble.com/UR7Lzwl0j3.png" class="charaimg">
+    <div class="charatitle2"><p>interested in women</p></div>
+</div>
+
+<div class="chara liw uno mmts">
+    <div class="charatitle"><p>celia arroyo</p></div>
+    <div class="charatitle2"><p>middlemarch: the series</p></div>
+    <img src="https://vidble.com/4UpN1FWnij.png" class="charaimg">
+    <div class="charatitle2"><p>interested in nonbinary people</p></div>
+</div>
+
+<div class="chara liw wlw gay nb ssauw">
+    <div class="charatitle"><p>charley condomine</p></div>
+    <div class="charatitle2"><p>school spirit</p></div>
+    <img src="http://vidble.com/K0BL2czMPJ_sqr.png" class="charaimg">
+    <div class="charatitle2"><p>nonbinary and gay</p></div>
+</div>
+
+<div class="chara ow wlw gay hh">
+    <div class="charatitle"><p>charlie bakersfield</p></div>
+    <div class="charatitle2"><p>high'rd help</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/charlie.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw wlw uno lolilo">
+    <div class="charatitle"><p>chelsey long</p></div>
+    <div class="charatitle2"><p>lovely little losers</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/chelsey.jpg" class="charaimg">
+    <div class="charatitle2"><p>interested in women</p></div>
+</div>
+
+
+<div class="chara hh ow wlw gay">
+    <div class="charatitle"><p>clara notaro</p></div>
+    <div class="charatitle2"><p>high'rd help</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/clara.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw wlw a4o gay">
+    <div class="charatitle"><p>connie bonacieux</p></div>
+    <div class="charatitle2"><p>all for one</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/connie1.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw wfw wlw multi">
+    <div class="charatitle"><p>connie lloyd</p></div>
+    <div class="charatitle2"><p>words from wilde</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/connie2.jpg" class="charaimg">
+    <div class="charatitle2"><p>multisexual</p></div>
+</div>
+
+<div class="chara liw tgtr mlm multi">
+    <div class="charatitle"><p>corey chopper</p></div>
+    <div class="charatitle2"><p>the grey tarmac road</p></div>
+    <img src="https://vidble.com/ehZ0bejCdw.png" class="charaimg">
+    <div class="charatitle2"><p>multisexual</p></div>
+</div>
+
+<div class="chara liw tgtr aro ace">
+    <div class="charatitle"><p>cyrus crow</p></div>
+    <div class="charatitle2"><p>the grey tarmac road</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/cyrus.jpg" class="charaimg">
+    <div class="charatitle2"><p>aromantic asexual</p></div>
+</div>
+
+<div class="chara liw cm wlw uno">
+    <div class="charatitle"><p>danny lawrence</p></div>
+    <div class="charatitle2"><p>carmilla</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/danny.jpg" class="charaimg">
+    <div class="charatitle2"><p>interested in women</p></div>
+</div>
+
+<div class="chara ow ci nb bi">
+    <div class="charatitle"><p>dee warson</p></div>
+    <div class="charatitle2"><p>couple-ish</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/07/dee.jpg" class="charaimg">
+    <div class="charatitle2"><p>nonbinary and bisexual</p></div>
+</div>
+
+<div class="chara liw aosb wlw bi">
+    <div class="charatitle"><p>deena</p></div>
+    <div class="charatitle2"><p>the adventures of serena berg</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/deena.jpg" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara liw bsn gf gq">
+    <div class="charatitle"><p>deme george</p></div>
+    <div class="charatitle2"><p>bright summer night</p></div>
+    <img src="https://bplotblog.files.wordpress.com/2016/07/deme.jpg" class="charaimg">
+    <div class="charatitle2"><p>genderfluid/genderqueer</p></div>
+</div>
+
+<div class="chara liw sos transf">
+    <div class="charatitle"><p>des omah</p></div>
+    <div class="charatitle2"><p>the soliloquies of santiago</p></div>
+    <img src="https://vidble.com/AZDQ40YVYd.jpg" class="charaimg">
+    <div class="charatitle2"><p>trans woman</p></div>
+</div>
+
+<div class="chara liw a4o wlw bi">
+    <div class="charatitle"><p>dorothy castlemore</p></div>
+    <div class="charatitle2"><p>all for one</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/dorothy1.jpg" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara liw mmts wlw bi">
+    <div class="charatitle"><p>dot brooke</p></div>
+    <div class="charatitle2"><p>middlemarch: the series</p></div>
+    <img src="https://vidble.com/mDBX0nvN37.png" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara liw 12gw mlm gay">
+    <div class="charatitle"><p>drew aguecheek</p></div>
+    <div class="charatitle2"><p>Twelfth grade (or whatever)</p></div>
+    <img src="https://vidble.com/nQ9GMxdDP0.png" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw tbs nb">
+    <div class="charatitle"><p>duke senior</p></div>
+    <div class="charatitle2"><p>the better strangers</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/duke.jpg" class="charaimg">
+    <div class="charatitle2"><p>nonbinary</p></div>
+</div>
+
+<div class="chara ow trp demig wlw pan">
+    <div class="charatitle"><p>dylan finnegan</p></div>
+    <div class="charatitle2"><p>the roedell project</p></div>
+    <img src="https://vidble.com/CMKxLqJMIs.png" class="charaimg">
+    <div class="charatitle2"><p>demigirl and pansexual</p></div>
+</div>
+
+<div class="chara liw cmc wlw gay">
+    <div class="charatitle"><p>eleanor monk</p></div>
+    <div class="charatitle2"><p>the cate morland chronicles</p></div>
+    <img src="https://vidble.com/wyrlsbQfHV.png" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw ssauw wlw pan">
+    <div class="charatitle"><p>ellen hammond</p></div>
+    <div class="charatitle2"><p>school spirit</p></div>
+    <img src="https://vidble.com/emq8bbchfy.png" class="charaimg">
+    <div class="charatitle2"><p>pansexual</p></div>
+</div>
+
+<div class="chara ow hoh wlw uno">
+    <div class="charatitle"><p>ellia henderson</p></div>
+    <div class="charatitle2"><p>haunted or hoax</p></div>
+    <img src="https://vidble.com/tVi7S5C7GU.png" class="charaimg">
+    <div class="charatitle2"><p>interested in women</p></div>
+</div>
+
+<div class="chara ow trp wlw gay">
+    <div class="charatitle"><p>em esposito</p></div>
+    <div class="charatitle2"><p>the roedell project</p></div>
+    <img src="https://vidble.com/99AgRZjdRO.png" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara ow aon ace">
+    <div class="charatitle"><p>emily applegate</p></div>
+    <div class="charatitle2"><p>all or nothing</p></div>
+    <img src="https://vidble.com/vSCX5rCQ1M.png" class="charaimg">
+    <div class="charatitle2"><p>asexual</p></div>
+</div>
+
+<div class="chara liw ssauw wlw uno">
+    <div class="charatitle"><p>emily lewis</p></div>
+    <div class="charatitle2"><p>school spirit</p></div>
+    <img src="https://vidble.com/YoNJ0vOhBN.png" class="charaimg">
+    <div class="charatitle2"><p>interested in women</p></div>
+</div>
+
+<div class="chara ow unups nb">
+    <div class="charatitle"><p>erica slender</p></div>
+    <div class="charatitle2"><p>the uncanny upshurs</p></div>
+    <img src="https://vidble.com/kyaVx7Dufr.png" class="charaimg">
+    <div class="charatitle2"><p>nonbinary</p></div>
+</div>
+
+<div class="chara ow l7sville wlw gay">
+    <div class="charatitle"><p>esther</p></div>
+    <div class="charatitle2"><p>squaresville</p></div>
+    <img src="https://vidble.com/rbXztu4xef.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw laii mlm bi">
+    <div class="charatitle"><p>felix touchstone</p></div>
+    <div class="charatitle2"><p>like, as it is</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/felix.jpg" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara liw lbd mlm gay">
+    <div class="charatitle"><p>fitz williams</p></div>
+    <div class="charatitle2"><p>the lizzie bennet diaries</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/fitz.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw 12gw ung">
+    <div class="charatitle"><p>foster page</p></div>
+    <div class="charatitle2"><p>twelfth grade (or whatever)</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/foster.jpg" class="charaimg">
+    <div class="charatitle2"><p>unspecified gender</p></div>
+</div>
+
+<div class="chara liw wfw wlw gay">
+    <div class="charatitle"><p>fran harris</p></div>
+    <div class="charatitle2"><p>words from wilde</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/fran.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw htd transf">
+    <div class="charatitle"><p>frankie cisco</p></div>
+    <div class="charatitle2"><p>hamlet the dame</p></div>
+    <img src="https://vidble.com/CUEHM6sk4t.png" class="charaimg">
+    <div class="charatitle2"><p>trans woman</p></div>
+</div>
+
+<div class="chara liw aov ag demisex">
+    <div class="charatitle"><p>frankie laurence</p></div>
+    <div class="charatitle2"><p>any other vlog</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/frankie.jpg" class="charaimg">
+    <div class="charatitle2"><p>agender and demisexual</p></div>
+</div>
+
+<div class="chara liw mmts mlm gay">
+    <div class="charatitle"><p>fred vincy</p></div>
+    <div class="charatitle2"><p>middlemarch: the series</p></div>
+    <img src="https://vidble.com/qPf2p4mH2C.png" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw afita mlm bi">
+    <div class="charatitle"><p>gabriel oak</p></div>
+    <div class="charatitle2"><p>away from it all</p></div>
+    <img src="https://vidble.com/tWPywJyavm.png" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara ow unups wlw bi ace">
+    <div class="charatitle"><p>gemma alexander</p></div>
+    <div class="charatitle2"><p>the uncanny upshurs</p></div>
+    <img src="https://vidble.com/jSeri4zCqj.png" class="charaimg">
+    <div class="charatitle2"><p>bi and asexual</p></div>
+</div>
+
+<div class="chara liw ow cmk nlts mlm bi">
+    <div class="charatitle"><p>george bates</p></div>
+    <div class="charatitle2"><p>call me katie/nothing like the sun</p></div>
+    <img src="https://vidble.com/i2pbxP2qXv.png" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara liw ow cmk nlts mlm gay">
+    <div class="charatitle"><p>george gleeson</p></div>
+    <div class="charatitle2"><p>call me katie/nothing like the sun</p></div>
+    <img src="https://vidble.com/zUGeNy8HVB.png" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+
+<div class="chara liw htd nb demig ace">
+    <div class="charatitle"><p>hamlet</p></div>
+    <div class="charatitle2"><p>hamlet the dame</p></div>
+    <img src="https://vidble.com/tuOStIcL5u.png" class="charaimg">
+    <div class="charatitle2"><p>nonbinary demigirl and asexual</p></div>
+</div>
+
+<div class="chara liw tajwash aro ace">
+    <div class="charatitle"><p>irene adler</p></div>
+    <div class="charatitle2"><p>the adventures of jamie watson</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/irene.jpg" class="charaimg">
+    <div class="charatitle2"><p>aromantic asexual</p></div>
+</div>
+
+<div class="chara liw nbs wlw uno">
+    <div class="charatitle"><p>isabella thorpe</p></div>
+    <div class="charatitle2"><p>northbound</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/isabella.jpg" class="charaimg">
+    <div class="charatitle2"><p>interested in women</p></div>
+</div>
+
+<div class="chara ow hoh wlw uno">
+    <div class="charatitle"><p>jac murphy</p></div>
+    <div class="charatitle2"><p>haunted or hoax</p></div>
+    <img src="https://vidble.com/dLZ5M4pccV.png" class="charaimg">
+    <div class="charatitle2"><p>interested in women</p></div>
+</div>
+
+<div class="chara liw sos mlm uno">
+    <div class="charatitle"><p>jacob santiago</p></div>
+    <div class="charatitle2"><p>the soliloquies of santiago</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/jacob.jpg" class="charaimg">
+    <div class="charatitle2"><p>interested in men</p></div>
+</div>
+
+<div class="chara ow unups mlm bi">
+    <div class="charatitle"><p>jake luna</p></div>
+    <div class="charatitle2"><p>the uncanny upshurs</p></div>
+    <img src="https://vidble.com/D2T3RchwOc.png" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara liw cmc mlm bi">
+    <div class="charatitle"><p>james morland</p></div>
+    <div class="charatitle2"><p>the cate morland chronicles</p></div>
+    <img src="https://vidble.com/QaCWbEDSkd_med.png" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara liw mmts nb">
+    <div class="charatitle"><p>jamie chettam</p></div>
+    <div class="charatitle2"><p>middlemarch: the series</p></div>
+    <img src="https://vidble.com/gPYzgJEcKX.png" class="charaimg">
+    <div class="charatitle2"><p>nonbinary</p></div>
+</div>
+
+<div class="chara ow wj wlw uno">
+    <div class="charatitle"><p>jamie dawson</p></div>
+    <div class="charatitle2"><p>wave jacked</p></div>
+    <img src="https://vidble.com/i1OcbRFOrC.jpg" class="charaimg">
+    <div class="charatitle2"><p>interested in women</p></div>
+</div>
+
+<div class="chara liw nbs wlw uno">
+    <div class="charatitle"><p>jamie morland</p></div>
+    <div class="charatitle2"><p>northbound</p></div>
+    <img src="https://vidble.com/TI61WCOfXp.png" class="charaimg">
+    <div class="charatitle2"><p>interested in women</p></div>
+</div>
+
+<div class="chara liw tajwash wlw bi">
+    <div class="charatitle"><p>jamie watson</p></div>
+    <div class="charatitle2"><p>the adventures of jamie watson</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/jamie2.jpg" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara liw tgg wlw uno">
+    <div class="charatitle"><p>jane bean pendleton</p></div>
+    <div class="charatitle2"><p>the glad game</p></div>
+    <img src="https://vidble.com/iKj8ROMlLv.png" class="charaimg">
+    <div class="charatitle2"><p>interested in women</p></div>
+</div>
+
+<div class="chara ow st nb">
+    <div class="charatitle"><p>jo harris</p></div>
+    <div class="charatitle2"><p>sidetrack</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/07/jo.jpg" class="charaimg">
+    <div class="charatitle2"><p>nonbinary</p></div>
+</div>
+
+<div class="chara liw mfl wlw uno">
+    <div class="charatitle"><p>joan brooke</p></div>
+    <div class="charatitle2"><p>the march family letters</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/joan.jpg" class="charaimg">
+    <div class="charatitle2"><p>interested in women</p></div>
+</div>
+
+<div class="chara liw napw mlm uno">
+    <div class="charatitle"><p>john darling</p></div>
+    <div class="charatitle2"><p>the new adventures of peter and wendy</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/john1.jpg" class="charaimg">
+    <div class="charatitle2"><p>interested in men</p></div>
+</div>
+
+<div class="chara liw napw mlm uno">
+    <div class="charatitle"><p>john smee</p></div>
+    <div class="charatitle2"><p>the new adventures of peter and wendy</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/john2.jpg" class="charaimg">
+    <div class="charatitle2"><p>interested in men</p></div>
+</div>
+
+<div class="chara liw tea mlm uno">
+    <div class="charatitle"><p>jon fairfax</p></div>
+    <div class="charatitle2"><p>the emma agenda</p></div>
+    <img src="https://vidble.com/U8wkrKeDk9.png" class="charaimg">
+    <div class="charatitle2"><p>interested in men</p></div>
+</div>
+
+<div class="chara liw tea wlw gay">
+    <div class="charatitle"><p>jordan knightley</p></div>
+    <div class="charatitle2"><p>the emma agenda</p></div>
+    <img src="https://vidble.com/k9dCZsWFAo.png" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw raj wlw pan">
+    <div class="charatitle"><p>juliet capulet</p></div>
+    <div class="charatitle2"><p>rome & juliet</p></div>
+    <img src="https://vidble.com/yi9i460ZGB.png" class="charaimg">
+    <div class="charatitle2"><p>pansexual</p></div>
+</div>
+
+<div class="chara liw cm nb">
+    <div class="charatitle"><p>lafontaine</p></div>
+    <div class="charatitle2"><p>carmilla</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/lafontaine.jpg" class="charaimg">
+    <div class="charatitle2"><p>nonbinary</p></div>
+</div>
+
+<div class="chara liw cm wlw gay">
+    <div class="charatitle"><p>laura hollis</p></div>
+    <div class="charatitle2"><p>carmilla</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/laura.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw bsn uno">
+    <div class="charatitle"><p>lena balavu</p></div>
+    <div class="charatitle2"><p>bright summer night</p></div>
+    <img src="https://bplotblog.files.wordpress.com/2016/07/lena.jpg" class="charaimg">
+    <div class="charatitle2"><p>unspecified orientation</p></div>
+</div>
+
+<div class="chara ow unups aro ace">
+    <div class="charatitle"><p>lennon hall</p></div>
+    <div class="charatitle2"><p>the uncanny upshurs</p></div>
+    <img src="https://vidble.com/HsmEmpGF7W.png" class="charaimg">
+    <div class="charatitle2"><p>aromantic asexual</p></div>
+</div>
+
+<div class="chara liw tgtr gf">
+    <div class="charatitle"><p>leone jinjur</p></div>
+    <div class="charatitle2"><p>the grey tarmac road</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/leone.jpg" class="charaimg">
+    <div class="charatitle2"><p>genderfluid</p></div>
+</div>
+
+<div class="chara ow tl wlw gay">
+    <div class="charatitle"><p>leslie clark</p></div>
+    <div class="charatitle2"><p>the leslie</p></div>
+    <img src="https://vidble.com/TKK8myCM0f.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+
+<div class="chara liw afita wlw bi">
+    <div class="charatitle"><p>liddy smallbury</p></div>
+    <div class="charatitle2"><p>away from it all</p></div>
+    <img src="https://www.vidble.com/GFJ6jObPpN.jpg" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara liw ca wlw uno">
+    <div class="charatitle"><p>lily oh</p></div>
+    <div class="charatitle2"><p>classic alice</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/lily.jpg" class="charaimg">
+    <div class="charatitle2"><p>interested in women</p></div>
+</div>
+
+<div class="chara liw tgtr wlw bi">
+    <div class="charatitle"><p>lin thropupland</p></div>
+    <div class="charatitle2"><p>the grey tarmac road</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/lin.jpg" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara ow ic mlm multi">
+    <div class="charatitle"><p>linc</p></div>
+    <div class="charatitle2"><p>inhuman condition</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/linc.jpg" class="charaimg">
+    <div class="charatitle2"><p>multisexual</p></div>
+</div>
+
+<div class="chara liw tea mlm uno transm">
+    <div class="charatitle"><p>lincoln churchill</p></div>
+    <div class="charatitle2"><p>the emma agenda</p></div>
+    <img src="https://vidble.com/yi4lkP1ESK.png" class="charaimg">
+    <div class="charatitle2"><p>trans man and interested in men</p></div>
+</div>
+
+<div class="chara liw aosb wlw uno">
+    <div class="charatitle"><p>lissa</p></div>
+    <div class="charatitle2"><p>the adventures of serena berg</p></div>
+    <img src="https://vidble.com/LLSNCCFq6V.png" class="charaimg">
+    <div class="charatitle2"><p>interested in women</p></div>
+</div>
+
+<div class="chara liw 12gw wlw bi">
+    <div class="charatitle"><p>liv belcik</p></div>
+    <div class="charatitle2"><p>twelfth grade (or whatever)</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/liv.jpg" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara liw mmj wlw uno">
+    <div class="charatitle"><p>lucy west</p></div>
+    <div class="charatitle2"><p>mina murray's journal</p></div>
+    <img src="https://www.vidble.com/mBJfUPySFM.png" class="charaimg">
+    <div class="charatitle2"><p>interested in women</p></div>
+</div>
+
+<div class="chara liw aosb ace">
+    <div class="charatitle"><p>luke nayer</p></div>
+    <div class="charatitle2"><p>the adventures of serena berg</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/luke.jpg" class="charaimg">
+    <div class="charatitle2"><p>asexual</p></div>
+</div>
+
+
+<div class="chara liw aov wlw pan">
+    <div class="charatitle"><p>marcy harley</p></div>
+    <div class="charatitle2"><p>any other vlog</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/marcy.jpg" class="charaimg">
+    <div class="charatitle2"><p>pansexual</p></div>
+</div>
+
+<div class="chara liw 12gw wlw pan">
+    <div class="charatitle"><p>maria waites</p></div>
+    <div class="charatitle2"><p>twelfth grade (or whatever)</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/maria.jpg" class="charaimg">
+    <div class="charatitle2"><p>pansexual</p></div>
+</div>
+
+<div class="chara ow nlts mlm uno">
+    <div class="charatitle"><p>mark porter</p></div>
+    <div class="charatitle2"><p>nothing like the sun</p></div>
+    <img src="https://vidble.com/BlS2q5Yyzq.png" class="charaimg">
+    <div class="charatitle2"><p>interested in men</p></div>
+</div>
+
+<div class="chara liw tajwash wlw gay">
+    <div class="charatitle"><p>mary morstan</p></div>
+    <div class="charatitle2"><p>the adventures of jamie watson</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/mary1.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw aoje wlw gay">
+    <div class="charatitle"><p>mary rivers</p></div>
+    <div class="charatitle2"><p>the autobiography of jane eyre</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/mary2.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw mmts mlm gay">
+    <div class="charatitle"><p>max garth</p></div>
+    <div class="charatitle2"><p>middlemarch: the seroes</p></div>
+    <img src="https://vidble.com/HMe43z16zz.png" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara ow trp mlm bi">
+    <div class="charatitle"><p>max o'brien</p></div>
+    <div class="charatitle2"><p>the roedell project</p></div>
+    <img src="https://vidble.com/z2Jvy4Ame5.png" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara liw mfl wlw multi">
+    <div class="charatitle"><p>meg march</p></div>
+    <div class="charatitle2"><p>the march family letters</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/meg.jpg" class="charaimg">
+    <div class="charatitle2"><p>multisexual</p></div>
+</div>
+
+<div class="chara liw raj wlw bi">
+    <div class="charatitle"><p>mer</p></div>
+    <div class="charatitle2"><p>rome & juliet</p></div>
+    <img src="https://vidble.com/xooOxkahYE.png" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara ow ic wlw bi">
+    <div class="charatitle"><p>michelle kessler</p></div>
+    <div class="charatitle2"><p>inhuman condition</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/michelle.jpg" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara liw mmj wlw bi">
+    <div class="charatitle"><p>mina murray</p></div>
+    <div class="charatitle2"><p>mina murray's journal</p></div>
+    <img src="https://vidble.com/k1xTfGRNXY.png" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara liw sos mlm bi">
+    <div class="charatitle"><p>morgan othello</p></div>
+    <div class="charatitle2"><p>the soliloquies of santiago</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/morgan.jpg" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara liw tgg wlw bi">
+    <div class="charatitle"><p>nancy furman</p></div>
+    <div class="charatitle2"><p>the glad game</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/nancy.jpg" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara ow w3 wlw gay">
+    <div class="charatitle"><p>nev</p></div>
+    <div class="charatitle2"><p>wh3els</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/nev.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw tgtr wlw bi">
+    <div class="charatitle"><p>nimmie tree</p></div>
+    <div class="charatitle2"><p>the grey tarmac road</p></div>
+    <img src="https://vidble.com/0ITQ3lZnQl.png" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara liw tgtr mlm ung uno">
+    <div class="charatitle"><p>omar tree</p></div>
+    <div class="charatitle2"><p>the grey tarmac road</p></div>
+    <img src="https://bplotblog.files.wordpress.com/2016/07/screen-shot-2016-08-01-at-11-15-07-am.png" class="charaimg">
+    <div class="charatitle2"><p>unspecified gender and interested in men</p></div>
+</div>
+
+<div class="chara liw 12gw mlm bi">
+    <div class="charatitle"><p>oren douglas</p></div>
+    <div class="charatitle2"><p>twelfth grade (or whatever)</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/oren1.jpg" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara liw laii mlm pan">
+    <div class="charatitle"><p>orlando deboys</p></div>
+    <div class="charatitle2"><p>like, as it is</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/orlando.jpg" class="charaimg">
+    <div class="charatitle2"><p>pansexual</p></div>
+</div>
+
+<div class="chara liw twm mlm gay">
+    <div class="charatitle"><p>oscar</p></div>
+    <div class="charatitle2"><p>the writing majors</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/oscar2.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw wfw mlm bi">
+    <div class="charatitle"><p>oscar wilde</p></div>
+    <div class="charatitle2"><p>words from wilde</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/oscar1.jpg" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+
+
+<div class="chara liw lolilo wlw gay">
+    <div class="charatitle"><p>paige moth</p></div>
+    <div class="charatitle2"><p>lovely little losers</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/paige.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw pgg mlm gay">
+    <div class="charatitle"><p>paul irving</p></div>
+    <div class="charatitle2"><p>project green gables</p></div>
+    <img src="https://vidble.com/gfjvrGtdcr.png" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw adocm tbs mlm pan">
+    <div class="charatitle"><p>paulie hathaway</p></div>
+    <div class="charatitle2"><p>a document of madness/the better strangers</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/paulie.jpg" class="charaimg">
+    <div class="charatitle2"><p>pansexual</p></div>
+</div>
+
+<div class="chara liw nmtd lolilo mlm bi">
+    <div class="charatitle"><p>peter donaldson</p></div>
+    <div class="charatitle2"><p>nothing much to do/lovely little losers</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/peter.jpg" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara liw ggf wlw multi">
+    <div class="charatitle"><p>phil gordon</p></div>
+    <div class="charatitle2"><p>green gables fables</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/phil.jpg" class="charaimg">
+    <div class="charatitle2"><p>multisexual</p></div>
+</div>
+
+<div class="chara liw tbs wlw gay">
+    <div class="charatitle"><p>phoebe anderson</p></div>
+    <div class="charatitle2"><p>the better strangers</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/phoebe3.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw laii wlw multi">
+    <div class="charatitle"><p>phoebe shepard</p></div>
+    <div class="charatitle2"><p>like, as it is</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/phoebe1.jpg" class="charaimg">
+    <div class="charatitle2"><p>multisexual</p></div>
+</div>
+
+<div class="chara liw misselarch wlw bi">
+    <div class="charatitle"><p>phoebe sower</p></div>
+    <div class="charatitle2"><p>the misselthwaite archives</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/phoebe2.jpg" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara liw tgg wlw uno ace">
+    <div class="charatitle"><p>pollyanna whittier</p></div>
+    <div class="charatitle2"><p>the glad game</p></div>
+    <img src="https://vidble.com/zP9SjE8PmJ.png" class="charaimg">
+    <div class="charatitle2"><p>interested in women and asexual</p></div>
+</div>
+
+<div class="chara liw bsn wlw uno">
+    <div class="charatitle"><p>poppy hÓu</p></div>
+    <div class="charatitle2"><p>bright summer night</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/poppy.jpg" class="charaimg">
+    <div class="charatitle2"><p>interested in women</p></div>
+</div>
+
+<div class="chara liw a4o wlw pan">
+    <div class="charatitle"><p>portia vallon</p></div>
+    <div class="charatitle2"><p>all for one</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/04/portia.jpg" class="charaimg">
+    <div class="charatitle2"><p>pansexual</p></div>
+</div>
+
+<div class="chara liw ggf ace">
+    <div class="charatitle"><p>priscilla grant</p></div>
+    <div class="charatitle2"><p>green gables fables</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/priscilla-grant.jpg" class="charaimg">
+    <div class="charatitle2"><p>asexual</p></div>
+</div>
+
+<div class="chara liw bsn nb demib">
+    <div class="charatitle"><p>puck goodall</p></div>
+    <div class="charatitle2"><p>bright summer night</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/04/puck.jpg" class="charaimg">
+    <div class="charatitle2"><p>nonbinary/demiboy</p></div>
+</div>
+
+<div class="chara ow ci wlw multi">
+    <div class="charatitle"><p>rachel mantt</p></div>
+    <div class="charatitle2"><p>couple-ish</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/07/rachel.jpg" class="charaimg">
+    <div class="charatitle2"><p>multisexual</p></div>
+</div>
+
+<div class="chara liw htd wlw gay">
+    <div class="charatitle"><p>rachel yorick</p></div>
+    <div class="charatitle2"><p>hamlet the dame</p></div>
+    <img src="https://vidble.com/2QJnuLEHbm.png" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara ow st wlw gay">
+    <div class="charatitle"><p>radhika kumari</p></div>
+    <div class="charatitle2"><p>sidetrack</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/07/radhika.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw aosb wlw pan">
+    <div class="charatitle"><p>rags</p></div>
+    <div class="charatitle2"><p>the adventures of serena berg</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/rags1.jpg" class="charaimg">
+    <div class="charatitle2"><p>pansexual</p></div>
+</div>
+
+<div class="chara liw wfw mlm gay">
+    <div class="charatitle"><p>robbie ross</p></div>
+    <div class="charatitle2"><p>words from wilde</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/robbie.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw sos mlm uno">
+    <div class="charatitle"><p>rodrigo souza</p></div>
+    <div class="charatitle2"><p>the soliloquies of santiago</p></div>
+    <img src="https://vidble.com/0dxQSMgw70.jpg" class="charaimg">
+    <div class="charatitle2"><p>interested in men</p></div>
+</div>
+
+<div class="chara liw raj wlw gay">
+    <div class="charatitle"><p>rome montague</p></div>
+    <div class="charatitle2"><p>rome & juliet</p></div>
+    <img src="https://vidble.com/GkOKf4ZAYd.png" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw aov ace">
+    <div class="charatitle"><p>romy montgomery</p></div>
+    <div class="charatitle2"><p>any other vlog</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/romy.jpg" class="charaimg">
+    <div class="charatitle2"><p>asexual</p></div>
+</div>
+
+<div class="chara ow unups wlw uno">
+    <div class="charatitle"><p>rosamond maccrae</p></div>
+    <div class="charatitle2"><p>the uncanny upshurs</p></div>
+    <img src="https://vidble.com/4v5g4glxuJ.png" class="charaimg">
+    <div class="charatitle2"><p>interested in women</p></div>
+</div>
+
+<div class="chara liw raj ace">
+    <div class="charatitle"><p>rose capulet</p></div>
+    <div class="charatitle2"><p>rome & juliet</p></div>
+    <img src="https://vidble.com/jEdEddBWz6.png" class="charaimg">
+    <div class="charatitle2"><p>asexual</p></div>
+</div>
+
+<div class="chara liw adocm tbs wlw bi">
+    <div class="charatitle"><p>rose crantz</p></div>
+    <div class="charatitle2"><p>a document of madness/the better strangers</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/04/rose.jpg" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara liw laii ag">
+    <div class="charatitle"><p>ross grant</p></div>
+    <div class="charatitle2"><p>like, as it is</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/ross1.jpg" class="charaimg">
+    <div class="charatitle2"><p>agender</p></div>
+</div>
+
+<div class="chara liw aov mlm gay">
+    <div class="charatitle"><p>ross sinclair</p></div>
+    <div class="charatitle2"><p>any other vlog</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/ross2.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara ow hh wlw pan">
+    <div class="charatitle"><p>rowan gaines</p></div>
+    <div class="charatitle2"><p>high'rd help</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/rowan.jpg" class="charaimg">
+    <div class="charatitle2"><p>pansexual</p></div>
+</div>
+
+<div class="chara liw aosb wlw uno demisex">
+    <div class="charatitle"><p>roxanne roberts</p></div>
+    <div class="charatitle2"><p>the adventures of serena berg</p></div>
+    <img src="https://vidble.com/g5mNp5Xw9g.png" class="charaimg">
+    <div class="charatitle2"><p>interested in women and demisexual</p></div>
+</div>
+
+<div class="chara liw ggf mlm multi">
+    <div class="charatitle"><p>roy gardner</p></div>
+    <div class="charatitle2"><p>green gables fables</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/roy.jpg" class="charaimg">
+    <div class="charatitle2"><p>multisexual</p></div>
+</div>
+
+<div class="chara liw ssauw wlw bi">
+    <div class="charatitle"><p>ruth canter</p></div>
+    <div class="charatitle2"><p>school spirit</p></div>
+    <img src="http://vidble.com/rDpBUJqXQF_sqr.png" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara ow st wlw bi">
+    <div class="charatitle"><p>sato aya</p></div>
+    <div class="charatitle2"><p>sidetrack</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/07/sato.jpg" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara liw 12gw transm mlm uno">
+    <div class="charatitle"><p>sebastian messing</p></div>
+    <div class="charatitle2"><p>twelfth grade (or whatever)</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/sebastian.jpg" class="charaimg">
+    <div class="charatitle2"><p>trans man and interested in men</p></div>
+</div>
+
+<div class="chara liw aosb transf wlw demiro demisex gay">
+    <div class="charatitle"><p>serena berg</p></div>
+    <div class="charatitle2"><p>the adventures of serena berg</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/serena.jpg" class="charaimg">
+    <div class="charatitle2"><p>trans woman, gay, and demi</p></div>
+</div>
+
+<div class="chara liw tajwash ung aro ace">
+    <div class="charatitle"><p>sherlock holmes</p></div>
+    <div class="charatitle2"><p>the adventures of jamie watson</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/sherlock.jpg" class="charaimg">
+    <div class="charatitle2"><p>unspecified gender and aromantic asexual</p></div>
+</div>
+
+<div class="chara liw afita wlw gay">
+    <div class="charatitle"><p>sherry miller</p></div>
+    <div class="charatitle2"><p>away from it all</p></div>
+    <img src="https://vidble.com/sFBZqxtXZ2.png" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara ow wj wlw uno">
+    <div class="charatitle"><p>shiloh roswell</p></div>
+    <div class="charatitle2"><p>wave jacked</p></div>
+    <img src="https://vidble.com/lUunKrxxJU.jpg" class="charaimg">
+    <div class="charatitle2"><p>interested in women</p></div>
+</div>
+
+<div class="chara ow w3 wlw gay">
+    <div class="charatitle"><p>shyanne</p></div>
+    <div class="charatitle2"><p>wh3els</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/shyanne.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara ow trp mlm aro bi">
+    <div class="charatitle"><p>silas hurley</p></div>
+    <div class="charatitle2"><p>the roedell project</p></div>
+    <img src="https://vidble.com/LgcrzigEz0.png" class="charaimg">
+    <div class="charatitle2"><p>aromantic bisexual</p></div>
+</div>
+
+<div class="chara liw laii wlw gay">
+    <div class="charatitle"><p>silvia corin</p></div>
+    <div class="charatitle2"><p>like, as it is</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/silvia.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw tbs wlw gay">
+    <div class="charatitle"><p>silvia sheppard</p></div>
+    <div class="charatitle2"><p>the better strangers</p></div>
+    <img src="https://vidble.com/4BZYd4vSwd.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara ow itsc wlw multi">
+    <div class="charatitle"><p>skye madison</p></div>
+    <div class="charatitle2"><p>it's complicated</p></div>
+    <img src="https://vidble.com/pnVUfaCeH9.jpg" class="charaimg">
+    <div class="charatitle2"><p>multisexual</p></div>
+</div>
+
+
+<div class="chara ow st wlw gay">
+    <div class="charatitle"><p>sloane richards</p></div>
+    <div class="charatitle2"><p>sidetrack</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/07/sloane1.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara ow brains wlw bi">
+    <div class="charatitle"><p>sophie bricker</p></div>
+    <div class="charatitle2"><p>brains</p></div>
+    <img src="https://vidble.com/7MKk9Yki2j.jpg" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara liw tajwash mlm transm bi demisex">
+    <div class="charatitle"><p>stanley hopkins</p></div>
+    <div class="charatitle2"><p>the adventures of jamie watson</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/stanley.jpg" class="charaimg">
+    <div class="charatitle2"><p>trans man and bi demisexual</p></div>
+</div>
+
+<div class="chara liw aov wlw bi">
+    <div class="charatitle"><p>tabby crow</p></div>
+    <div class="charatitle2"><p>any other vlog</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/tabby.jpg" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara liw 12gw wlw gay">
+    <div class="charatitle"><p>tammi belcik</p></div>
+    <div class="charatitle2"><p>twelfth grade (or whatever)</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/tammi.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara liw bsn wlw uno">
+    <div class="charatitle"><p>thea quince</p></div>
+    <div class="charatitle2"><p>bright summer night</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/thea.jpg" class="charaimg">
+    <div class="charatitle2"><p>interested in women</p></div>
+</div>
+
+<div class="chara liw fmwl mlm gay">
+    <div class="charatitle"><p>tom bertram</p></div>
+    <div class="charatitle2"><p>from mansfield with love</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/tom.jpg" class="charaimg">
+    <div class="charatitle2"><p>gay</p></div>
+</div>
+
+<div class="chara ow nlts mlm bi">
+    <div class="charatitle"><p>tom carlisle</p></div>
+    <div class="charatitle2"><p>nothing like the sun</p></div>
+    <img src="https://vidble.com/q19bl2ccHa.png" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara liw tgtr wlw uno">
+    <div class="charatitle"><p>trudy whyatt</p></div>
+    <div class="charatitle2"><p>the grey tarmac road</p></div>
+    <img src="https://vidble.com/iEWy29FLV8.png" class="charaimg">
+    <div class="charatitle2"><p>interested in women</p></div>
+</div>
+
+<div class="chara liw 12gw mlm uno">
+    <div class="charatitle"><p>vic caius</p></div>
+    <div class="charatitle2"><p>twelfth grade (or whatever)</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/vic.jpg" class="charaimg">
+    <div class="charatitle2"><p>interested in men</p></div>
+</div>
+
+<div class="chara liw 12gw wlw ung bi demiro">
+    <div class="charatitle"><p>viola messing</p></div>
+    <div class="charatitle2"><p>twelfth grade (or whatever)</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/viola.jpg" class="charaimg">
+    <div class="charatitle2"><p>unspecified gender and demiromantic bisexual</p></div>
+</div>
+
+<div class="chara liw tajwash wlw bi">
+    <div class="charatitle"><p>violet hunter</p></div>
+    <div class="charatitle2"><p>the adventures of jamie watson</p></div>
+    <img src="https://vidble.com/R9YDIpYLs5.png" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara ow unups mlm bi">
+    <div class="charatitle"><p>wally upshur</p></div>
+    <div class="charatitle2"><p>the uncanny upshurs</p></div>
+    <img src="https://vidble.com/WptPlepPlV.png" class="charaimg">
+    <div class="charatitle2"><p>bisexual</p></div>
+</div>
+
+<div class="chara liw tajwash wlw pan">
+    <div class="charatitle"><p>wendy hooper</p></div>
+    <div class="charatitle2"><p>the adventures of jamie watson</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/wendy.jpg" class="charaimg">
+    <div class="charatitle2"><p>pansexual</p></div>
+</div>
+
+<div class="chara liw tajwash gq">
+    <div class="charatitle"><p>wiggins</p></div>
+    <div class="charatitle2"><p>the adventures of jamie watson</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/wiggins.jpg" class="charaimg">
+    <div class="charatitle2"><p>genderqueer</p></div>
+</div>
+
+
+<div class="chara liw twm mlm multi">
+    <div class="charatitle"><p>will</p></div>
+    <div class="charatitle2"><p>the writing majors</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/05/will2.jpg" class="charaimg">
+    <div class="charatitle2"><p>multisexual</p></div>
+</div>
+
+<div class="chara liw ow cmk nlts gf">
+    <div class="charatitle"><p>will sanders</p></div>
+    <div class="charatitle2"><p>call me katie/nothing like the sun</p></div>
+    <img src="https://vidble.com/Jb9efGoiAJ.png" class="charaimg">
+    <div class="charatitle2"><p>genderfluid</p></div>
+</div>
+
+<div class="chara ow bgp wlw pan">
+    <div class="charatitle"><p>zoe lasnammer</p></div>
+    <div class="charatitle2"><p>the blair goddess project</p></div>
+    <img src="https://thegoodviolets.files.wordpress.com/2016/07/zoe.jpg" class="charaimg">
+    <div class="charatitle2"><p>pansexual</p></div>
+</div>
+        
+
+        
+        
+        
+        
+        
+    </div> <!-- Don't put any character boxes after this tag! -->
+    <a href="http://hendrixrph.tumblr.com"><div class="credit">hendrixrph</div></a>
+    
+    
+    <!-- All the filtering scripts. No need to mess with these unless you know what you're doing. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.0/isotope.pkgd.js"></script>
+    <script>
+        
+// external js: isotope.pkgd.js
+
+$(document).ready( function() {
+  // init Isotope
+  var $grid = $('.wrapper').isotope({
+    itemSelector: '.chara'
+  });
+
+  // store filter for each group
+  var filters = {};
+
+  $('.filters').on( 'click', '.button', function() {
+    var $this = $(this);
+    // get group key
+    var $buttonGroup = $this.parents('.button-group');
+    var filterGroup = $buttonGroup.attr('data-filter-group');
+    // set filter for group
+    filters[ filterGroup ] = $this.attr('data-filter');
+    // combine filters
+    var filterValue = concatValues( filters );
+    // set filter for Isotope
+    $grid.isotope({ filter: filterValue });
+  });
+
+  // change is-checked class on buttons
+  $('.button-group').each( function( i, buttonGroup ) {
+    var $buttonGroup = $( buttonGroup );
+    $buttonGroup.on( 'click', 'button', function() {
+      $buttonGroup.find('.ischecked').removeClass('ischecked');
+      $( this ).addClass('ischecked');
+    });
+  });
+  
+});
+
+// flatten object by concatting values
+function concatValues( obj ) {
+  var value = '';
+  for ( var prop in obj ) {
+    value += obj[ prop ];
+  }
+  return value;
+}
+        
+    </script>
+    
+</body>
+
+</html>
